@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="compile" name="Servidor">
+    <property name="ProjetoBase" value="../ProjetoBase"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+	<property name="jar.dir" value="build/jar"/>
+	<property name="dependencias" value="${ProjetoBase}/build/jar"/>
+	<property name="main-class" value="com.projeto.servidor.Servidor"/>
+
+
+	<path id="ProjetoBase.classpath">
+	        <pathelement location="${ProjetoBase}/bin"/>
+	</path>
+    <path id="MensagemServer.classpath">
+        <pathelement location="bin"/>
+        <path refid="ProjetoBase.classpath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+    	<copy includeemptydirs="false" todir="bin">
+    	    <fileset dir="src">
+    	        <exclude name="**/*.java"/>
+    	    </fileset>
+    	</copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${ProjetoBase}" inheritAll="false" target="clean"/>
+    </target>
+	<target name="compile-referencias">
+	        <ant antfile="build.xml" dir="${ProjetoBase}" inheritAll="false" target="jar">
+	            <propertyset>
+	                <propertyref name="build.compiler"/>
+	            </propertyset>
+	        </ant>
+	</target>
+	
+    <target depends="clean,init,compile-referencias" name="compile">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="MensagemServer.classpath"/>
+        </javac>
+
+    </target>
+	
+	<target name="jar" depends="compile">
+		<delete dir="build"/>
+		<mkdir dir="${jar.dir}"/>
+	    <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="bin">
+	        <manifest>
+	    	    <attribute name="Main-Class" value="${main-class}"/>
+	        </manifest>
+		    <zipgroupfileset dir="${dependencias}" includes="**/*.jar"/>
+	    </jar>
+	</target>
+
+    <target name="run" depends="jar">
+        <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+    </target>
+	
+</project>
