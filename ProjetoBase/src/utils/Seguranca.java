@@ -15,7 +15,8 @@ public class Seguranca {
 	private static final int MENOR_PORTA = 1024;
 	private static final int MAIOR_PORTA = 49151;
 	
-	private static final String ERRO_CONEXAO ="Não foi possível estabelecer conexão com o servidor.\nO servidor possivelmente está desligado ou operando em um IP/Porta diferente.";
+	private static final String MSG_ERRO_CONEXAO ="Não foi possível estabelecer conexão com o servidor.\nO servidor possivelmente está desligado ou operando em um IP/Porta diferente.";
+	public static final String MSG_ERRO_PORTA ="A porta escolhida já está em uso. Favor escolher outra.";
 
 
 
@@ -37,7 +38,7 @@ public class Seguranca {
             msn = (BufferInterface)
             Naming.lookup(montarEnderecoParaCliente(enderecoServidor));
         } catch (IOException e) {
-			System.err.println(ERRO_CONEXAO);
+			System.err.println(MSG_ERRO_CONEXAO);
 			System.exit(1);
         } catch (NotBoundException e) {
 			e.printStackTrace();

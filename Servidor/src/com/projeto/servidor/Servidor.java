@@ -39,7 +39,7 @@ import com.projeto.utils.Utils;
              
 
          } catch (RemoteException e) {
-              e.printStackTrace();
+              System.err.println(Seguranca.MSG_ERRO_PORTA);
          } catch (MalformedURLException e) {
               e.printStackTrace();
 		 }

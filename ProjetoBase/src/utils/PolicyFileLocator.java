@@ -9,6 +9,7 @@ import java.io.InputStream;
 public class PolicyFileLocator {
 
 	public static final String POLICY_FILE_NAME = "allow_all.policy";
+	public static final String MSG_ERRO_ARQUIVO_POLICY="Arquivo .policy não encontrado ou corrompido.";
 	
 	public static String getLocationOfPolicyFile(){
 		
@@ -29,6 +30,7 @@ public class PolicyFileLocator {
 			
 			
 		} catch (IOException e) {
+            System.err.println(MSG_ERRO_ARQUIVO_POLICY);
 			throw new RuntimeException(e);
 		}
 	}

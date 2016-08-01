@@ -1,8 +1,10 @@
 package com.projeto.cliente;
 
 import interfaces.BufferInterface;
+import interfaces.ClienteInterface;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,15 +12,20 @@ import utils.Seguranca;
 
 import com.projeto.utils.Utils;
 
-public class Produtor implements Runnable {
+public class Produtor extends UnicastRemoteObject implements Runnable, ClienteInterface {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -626534836752512390L;
 	private static BufferInterface bufferRemoto;
 
     public BufferInterface getBufferRemoto() {
 		return bufferRemoto;
 	}
 
-	public Produtor(String enderecoServidor) {
+	public Produtor(String enderecoServidor) throws RemoteException {
+		super();
 		if (bufferRemoto == null){
 			bufferRemoto = Seguranca.conectarComServidor(bufferRemoto, enderecoServidor);
 		}
@@ -35,7 +42,9 @@ public class Produtor implements Runnable {
     	
         System.out.println(nomeThread +" produziu: " + i);
         try {
-          	getBufferRemoto().produzir(i, nomeThread);
+        	Thread.sleep(500);
+        	
+          	getBufferRemoto().produzir(i, nomeThread, this);
 
            	System.out.println("Colocado o valor " + i + " no Buffer pelo " + nomeThread+ " em "+ (System.currentTimeMillis()-inicioOperacao)+" milissegundos.");
         } catch (InterruptedException ex) {
@@ -46,6 +55,13 @@ public class Produtor implements Runnable {
 
         
     }
+
+	@Override
+	public void notificaCliente(String mensagem) throws RemoteException {
+		System.out.println(mensagem);
+		
+	}
+
 
     
     

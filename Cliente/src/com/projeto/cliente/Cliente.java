@@ -1,4 +1,5 @@
 package com.projeto.cliente;
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
 import utils.Seguranca;
@@ -26,7 +27,6 @@ import com.projeto.utils.Utils;
         enderecoServidor = leitor.nextLine();
         
         Utils.validarEnderecoServidor(enderecoServidor, leitor);
-        //enderecoServidor = "192.168.0.106:1099";
         
         System.out.println(Utils.MSG_NUM_THREADS);
         
@@ -35,25 +35,25 @@ import com.projeto.utils.Utils;
         Utils.validarNumThreads(threads, leitor);
         
         numThreads = Integer.parseInt(threads);
+        try {
+        	
+	        if (tipoCliente.toLowerCase().equals("p")){	        	
+	        	for (int i=0;i<numThreads;i++){
+	        		Thread prodThread = new Thread(new Produtor(enderecoServidor), "Produtor "+i);
+		        	prodThread.start();	
+	        	}	        	
+	        }
+	        
+	        if (tipoCliente.toLowerCase().equals("c")){	        	
+	        	for (int i=0;i<numThreads;i++){
+	        		Thread consThread = new Thread(new Consumidor(enderecoServidor), "Consumidor "+i);
+	        		consThread.start();
+	        	}	        	
+	        }
         
-        if (tipoCliente.toLowerCase().equals("p")){
-        	
-        	for (int i=0;i<numThreads;i++){
-        		Thread prodThread = new Thread(new Produtor(enderecoServidor), "Produtor "+i);
-        		prodThread.start();
-        	}
-        	
-        }
-        
-        if (tipoCliente.toLowerCase().equals("c")){
-        	
-        	for (int i=0;i<numThreads;i++){
-        		Thread consThread = new Thread(new Consumidor(enderecoServidor), "Consumidor "+i);
-        		consThread.start();
-        	}
-        	
-        }
-
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}        
         
      }
      
