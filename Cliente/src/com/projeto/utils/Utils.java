@@ -6,17 +6,17 @@ import java.util.Scanner;
 import utils.Seguranca;
 
 public class Utils {
-	public static final String MSG_TIPO_CLIENTE = "Digite o Tipo de Cliente a ser executado:\nP-Produtor\nC-Consumidor";
-	public static final String MSG_TIPO_ENDERECO= "Digite o endereco do servidor remoto. O formato deve ser IP:PORTA";
-	public static final String MSG_NUM_THREADS= "Digite o numero de threads cliente desejadas...";
+	public static final String MSG_TIPO_CLIENTE = "Digite o tipo de cliente a ser executado:\nP-Produtor\nC-Consumidor";
+	public static final String MSG_TIPO_ENDERECO= "Digite o endereço do servidor remoto. O formato deve ser IP:PORTA";
+	public static final String MSG_NUM_THREADS= "Digite o número de threads cliente desejadas...";
 	
 	private static final int QTD_NUM_ALEATORIOS =256;
 	private static final String PADRAO_ENDERECO_VALIDO ="^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}:\\d{4,5}$";
 	private static final String PADRAO_TIPO_CLIENTE_VALIDO ="^[pP|cC]$";
 	private static final String PADRAO_NUMERO_VALIDO ="^\\d+$";
-	private static final String MSG_ENDERECO_INVALIDO = "Endereco invalido. Favor verificar:\n1- Padrao de endereco(IP:PORTA)\n2- Digitos validos para IP e PORTA\n3- Porta dentro do intervalo permitido (1024-49151).\nFavor repetir operacao.";
-	private static final String MSG_TIPO_CLIENTE_INVALIDO = "Tipo de cliente invalido.\n O padrao e: \n P-Produtor\n C-Consumidor\nFavor repetir operacao.";
-	private static final String MSG_NUM_THREADS_INVALIDO= "O numero digitado nao e valido. Favor repetir a operacao.";
+	private static final String MSG_ENDERECO_INVALIDO = "Endereço inválido. Favor verificar:\n1- Padrão de endereço(IP:PORTA)\n2- Digitos válidos para IP e PORTA\n3- Porta dentro do intervalo permitido (1024-49151).\nFavor repetir operação.";
+	private static final String MSG_TIPO_CLIENTE_INVALIDO = "Tipo de cliente inválido.\n O padrão é: \n P-Produtor\n C-Consumidor\nFavor repetir operação.";
+	private static final String MSG_NUM_THREADS_INVALIDO= "O número digitado nao é válido. Favor repetir a operação.";
 
        
     public static void validarEnderecoServidor(String enderecoServidor, Scanner leitor){

@@ -15,7 +15,7 @@ public class Seguranca {
 	private static final int MENOR_PORTA = 1024;
 	private static final int MAIOR_PORTA = 49151;
 	
-	private static final String ERRO_CONEXAO ="Nao foi possivel estabelecer conexao com o servidor. O servidor possivelmente esta desligado.";
+	private static final String ERRO_CONEXAO ="Não foi possível estabelecer conexão com o servidor.\nO servidor possivelmente está desligado ou operando em um IP/Porta diferente.";
 
 
 
