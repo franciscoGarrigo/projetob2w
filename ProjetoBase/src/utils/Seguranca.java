@@ -8,7 +8,7 @@ import interfaces.BufferInterface;
 
 public class Seguranca {
 	
-	private static final String NOME_SERVIDOR ="BufferServer";
+	public static final String NOME_SERVIDOR ="BufferServer";
 	private static final String RMI_CODEBASE ="java.rmi.server.codebase";
 	private static final String JAVA_POLICY = "java.security.policy";
 
