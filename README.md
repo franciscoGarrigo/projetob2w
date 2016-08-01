@@ -5,3 +5,6 @@ Para executá lo, basta seguir os seguintes passos:
 2 - Executar os jars gerados
 3 - Para executar o(s) consumidor(es) deve-se executar o jar cliente com o parametro "c"
 4 - para executar o(s) produtor(es) deve-se executar o jar cliente com o parametro "p"
+5 - seguir as instruçoes apresentadas tanto na tela de servidor quanto na de cliente.
+
+Observaçoes: a aplicaçao considera porta válida qualquer porta dentro do intervalo 1024-49151
