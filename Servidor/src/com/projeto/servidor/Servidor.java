@@ -15,11 +15,11 @@ import com.projeto.utils.Utils;
      public static void main(String[] args) {
          try {
         	 
-        	 String porta, tamanhoBuffer;
+             String porta, tamanhoBuffer;
         	  
-         	 Seguranca.configurarSeguranca();
+             Seguranca.configurarSeguranca();
          	  
-         	 Scanner leitor = new Scanner(System.in);
+             Scanner leitor = new Scanner(System.in);
              System.out.println(Utils.MSG_NUMERO_PORTA);
              porta = leitor.nextLine();
              
@@ -30,7 +30,7 @@ import com.projeto.utils.Utils;
              
              Utils.validarTamanhoBuffer(tamanhoBuffer, leitor);
         	  
-        	 LocateRegistry.createRegistry(Integer.parseInt(porta));
+             LocateRegistry.createRegistry(Integer.parseInt(porta));
              BufferImpl servidor = new BufferImpl(Integer.parseInt(tamanhoBuffer));
   
              Naming.rebind(Seguranca.montarEnderecoServidor(porta), servidor);
@@ -42,7 +42,7 @@ import com.projeto.utils.Utils;
               System.err.println(Seguranca.MSG_ERRO_PORTA);
          } catch (MalformedURLException e) {
               e.printStackTrace();
-		 }
+	 }
   
     }
      
