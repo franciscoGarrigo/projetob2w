@@ -13,7 +13,7 @@ import utils.Seguranca;
 
 	private static final long serialVersionUID = 258720965157413927L;
 	
-	private static final String NOME_SERVIDOR = "Servidor: " + Seguranca.NOME_SERVIDOR +": ";
+	private static final String NOME_SERVIDOR = "Servidor " + Seguranca.NOME_SERVIDOR +": - ";
 
 	private Vector<Integer> buffer;
 

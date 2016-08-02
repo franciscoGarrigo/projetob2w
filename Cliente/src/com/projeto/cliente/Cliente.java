@@ -21,18 +21,18 @@ import com.projeto.utils.Utils;
         System.out.println(Utils.MSG_TIPO_CLIENTE);
         tipoCliente = leitor.nextLine();
         
-        Utils.validarTipoCliente(tipoCliente, leitor);
+        tipoCliente = Utils.validarTipoCliente(tipoCliente, leitor);
         
         System.out.println(Utils.MSG_TIPO_ENDERECO);
         enderecoServidor = leitor.nextLine();
         
-        Utils.validarEnderecoServidor(enderecoServidor, leitor);
+        enderecoServidor = Utils.validarEnderecoServidor(enderecoServidor, leitor);
         
         System.out.println(Utils.MSG_NUM_THREADS);
         
         threads = leitor.nextLine();
         
-        Utils.validarNumThreads(threads, leitor);
+        threads = Utils.validarNumThreads(threads, leitor);
         
         numThreads = Integer.parseInt(threads);
         try {

@@ -23,12 +23,12 @@ import com.projeto.utils.Utils;
              System.out.println(Utils.MSG_NUMERO_PORTA);
              porta = leitor.nextLine();
              
-             Utils.validarPorta(porta, leitor);
+             porta = Utils.validarPorta(porta, leitor);
              
              System.out.println(Utils.MSG_TAMANHO_BUFFER);
              tamanhoBuffer = leitor.nextLine();
              
-             Utils.validarTamanhoBuffer(tamanhoBuffer, leitor);
+             tamanhoBuffer = Utils.validarTamanhoBuffer(tamanhoBuffer, leitor);
         	  
              LocateRegistry.createRegistry(Integer.parseInt(porta));
              BufferImpl servidor = new BufferImpl(Integer.parseInt(tamanhoBuffer));

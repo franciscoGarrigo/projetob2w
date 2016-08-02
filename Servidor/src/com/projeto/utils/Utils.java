@@ -13,7 +13,7 @@ public class Utils {
 	private static final String PADRAO_TAMANHO_VALIDO ="^\\d+$";
 	private static final String MSG_TAMANHO_INVALIDO="O tamanho digitado não é um número válido. Favor repetir a operação";
 	
-    public static void validarPorta(String porta, Scanner leitor){
+    public static String validarPorta(String porta, Scanner leitor){
     	
     	boolean portaValida = porta.matches(PADRAO_PORTA_NUMERO_VALIDO)&& Seguranca.portaIntervaloValido(porta);
     	if(!portaValida){
@@ -26,12 +26,12 @@ public class Utils {
     		
     	};
     	   	
-    	
+    	return porta;
     }
     
 
     
-    public static void validarTamanhoBuffer(String tamanhoBuffer, Scanner leitor){
+    public static String validarTamanhoBuffer(String tamanhoBuffer, Scanner leitor){
     	
     	boolean tamanhoValido = tamanhoBuffer.matches(PADRAO_TAMANHO_VALIDO);
     	if(!tamanhoValido){
@@ -44,6 +44,7 @@ public class Utils {
     		
     	};
     	
+    	return tamanhoBuffer;
     }
 
 }

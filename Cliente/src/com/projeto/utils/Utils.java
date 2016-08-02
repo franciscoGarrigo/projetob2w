@@ -19,7 +19,7 @@ public class Utils {
 	private static final String MSG_NUM_THREADS_INVALIDO= "O número digitado nao é válido. Favor repetir a operação.";
 
        
-    public static void validarEnderecoServidor(String enderecoServidor, Scanner leitor){
+    public static String validarEnderecoServidor(String enderecoServidor, Scanner leitor){
     	
     	boolean enderecoValido = validarEnderecoEPorta(enderecoServidor);
     	if(!enderecoValido){
@@ -32,6 +32,7 @@ public class Utils {
     		
     	};
     	
+    	return enderecoServidor;
     }
     
     private static boolean validarEnderecoEPorta(String enderecoServidor){
@@ -48,7 +49,7 @@ public class Utils {
     	
     }
     
-    public static void validarTipoCliente(String tipoCliente, Scanner leitor){
+    public static String validarTipoCliente(String tipoCliente, Scanner leitor){
     	
     	boolean tipoValido = tipoCliente.matches(PADRAO_TIPO_CLIENTE_VALIDO);
     	if(!tipoValido){
@@ -61,9 +62,10 @@ public class Utils {
     		
     	};
     	
+    	return tipoCliente;
     }
     
-    public static void validarNumThreads(String numThreads, Scanner leitor){
+    public static String validarNumThreads(String numThreads, Scanner leitor){
     	
     	boolean tamanhoValido = numThreads.matches(PADRAO_NUMERO_VALIDO);
     	if(!tamanhoValido){
@@ -76,6 +78,7 @@ public class Utils {
     		
     	};
     	
+    	return numThreads;
     }
    
     
