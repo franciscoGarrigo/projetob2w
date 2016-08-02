@@ -40,7 +40,7 @@ public class Consumidor extends UnicastRemoteObject implements Runnable, Cliente
         try {
         	Thread.sleep(500);
           	valorRetirado = getBufferRemoto().consumir(nomeThread, this);
-           	System.out.println("Retirado o valor "+ valorRetirado + " do Buffer pelo " +nomeThread+ " em "+ (System.currentTimeMillis()-inicioOperacao)+" milissegundos.");
+           	System.out.println("\nRetirado o valor "+ valorRetirado + " do Buffer pelo " +nomeThread+ " em "+ (System.currentTimeMillis()-inicioOperacao)+" milissegundos.");
         } catch (InterruptedException ex) {
             Logger.getLogger(Consumidor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException e) {

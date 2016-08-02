@@ -13,7 +13,7 @@ import utils.Seguranca;
 
 	private static final long serialVersionUID = 258720965157413927L;
 	
-	private static final String NOME_SERVIDOR = "Servidor " + Seguranca.NOME_SERVIDOR +": - ";
+	private static final String NOME_SERVIDOR = "\nServidor " + Seguranca.NOME_SERVIDOR +": - ";
 
 	private Vector<Integer> buffer;
 
@@ -29,7 +29,7 @@ import utils.Seguranca;
 	      public void produzir(Integer valor, String nomeThread, ClienteInterface cliente) throws RemoteException, InterruptedException {
 	          while (buffer.size() == tamanhoBuffer) {
 	              synchronized (buffer) {
-	                  System.out.println(" - Buffer está cheio " + nomeThread
+	                  System.out.println("\n - Buffer está cheio " + nomeThread
 	                                      + " está esperando espaco no buffer! O tamanho da fila é: " + buffer.size());
                       cliente.notificaCliente(NOME_SERVIDOR+nomeThread+" tentou colocar item no Buffer cheio!");
 	                  buffer.wait();
@@ -38,7 +38,7 @@ import utils.Seguranca;
 
 	          synchronized (buffer) {
 	        	  buffer.add(valor);
-		          System.out.println(" - " + nomeThread + " adicionou "+ valor+ " ao buffer.");
+		          System.out.println("\n - " + nomeThread + " adicionou "+ valor+ " ao buffer.");
 		          System.out.println(" - Buffer depois que "+nomeThread+" inseriu seu valor: "+buffer);
 	              buffer.notifyAll();
 	          }
@@ -52,7 +52,7 @@ import utils.Seguranca;
 
 	          while (buffer.isEmpty()) {
 	              synchronized (buffer) {
-	                  System.out.println(" - Buffer está vazio " + nomeThread
+	                  System.out.println("\n - Buffer está vazio " + nomeThread
 	                                      + " está esperando... Tamanho da fila é: " + buffer.size());
                       cliente.notificaCliente(NOME_SERVIDOR+nomeThread+" tentou consumir item de um Buffer vazio!");
 	                  buffer.wait();
@@ -61,7 +61,7 @@ import utils.Seguranca;
 
 	          synchronized (buffer) {
 	        	  Integer itemRemovido = buffer.remove(0);
-		          System.out.println(" - " + nomeThread + " removeu "+ itemRemovido+ " do buffer.");
+		          System.out.println("\n - " + nomeThread + " removeu "+ itemRemovido+ " do buffer.");
 		          System.out.println(" - Buffer depois que "+nomeThread+" removeu um valor: "+buffer);
 	        	  buffer.notifyAll();
 	              return itemRemovido;

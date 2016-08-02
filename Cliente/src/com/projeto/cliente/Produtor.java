@@ -46,7 +46,7 @@ public class Produtor extends UnicastRemoteObject implements Runnable, ClienteIn
         	
           	getBufferRemoto().produzir(i, nomeThread, this);
 
-           	System.out.println("Colocado o valor " + i + " no Buffer pelo " + nomeThread+ " em "+ (System.currentTimeMillis()-inicioOperacao)+" milissegundos.");
+           	System.out.println("\nColocado o valor " + i + " no Buffer pelo " + nomeThread+ " em "+ (System.currentTimeMillis()-inicioOperacao)+" milissegundos.");
         } catch (InterruptedException ex) {
             Logger.getLogger(Produtor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException e) {
